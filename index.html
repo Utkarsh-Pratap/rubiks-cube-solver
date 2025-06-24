@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rubik's Cube Solver</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 2.5rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    #controls {
+      margin-top: 30px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      background-color: #4e54c8;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #6c63ff;
+    }
+
+    #cubeContainer {
+      margin-top: 40px;
+      width: 200px;
+      height: 200px;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(0) rotateY(0);
+      transition: transform 0.5s;
+    }
+
+    .face {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .front  { background-color: #ff0000; transform: translateZ(100px); }
+    .back   { background-color: #ffcc00; transform: rotateY(180deg) translateZ(100px); }
+    .right  { background-color: #00ff00; transform: rotateY(90deg) translateZ(100px); }
+    .left   { background-color: #0000ff; transform: rotateY(-90deg) translateZ(100px); }
+    .top    { background-color: #ffffff; transform: rotateX(90deg) translateZ(100px); }
+    .bottom { background-color: #ff00ff; transform: rotateX(-90deg) translateZ(100px); }
+  </style>
+</head>
+<body>
+  <h1>🧩 Rubik's Cube Solver</h1>
+
+  <div id="controls">
+    <button onclick="scrambleCube()">Scramble</button>
+    <button onclick="solveCube()">Solve</button>
+    <button onclick="resetCube()">Reset</button>
+  </div>
+
+  <div id="cubeContainer">
+    <div class="face front"></div>
+    <div class="face back"></div>
+    <div class="face right"></div>
+    <div class="face left"></div>
+    <div class="face top"></div>
+    <div class="face bottom"></div>
+  </div>
+
+  <script src="cube.js"></script>
+</body>
+</html>
